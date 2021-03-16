@@ -1,1 +1,1 @@
-# Grupa3-FitnessPlaner
+# Grupa3-BestHealthStrategies
