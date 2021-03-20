@@ -20,5 +20,5 @@ Svjedoci smo sve bržeg života koji čovjek 21. vijeka živi. Manjak osviješte
 *	Prikaz motivacionih poruka na stranici klijenta
   
 ## Tehnologije
-Tehnologije korištene u projektu su:
+Tehnologije korištene na projektu su:
 * C#
