@@ -22,4 +22,3 @@ Svjedoci smo sve bržeg života koji čovjek 21. vijeka živi. Manjak osviješte
 ## Tehnologije
 Tehnologije korištene na projektu su:
 * ASP.NET CORE
-* C#
