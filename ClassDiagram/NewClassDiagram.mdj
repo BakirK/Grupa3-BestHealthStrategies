@@ -631,7 +631,7 @@
 											"top": 583,
 											"width": 167,
 											"height": 13,
-											"text": "People"
+											"text": "Person"
 										},
 										{
 											"_type": "LabelView",
@@ -773,13 +773,30 @@
 											"height": 13,
 											"text": "-surname: string",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF4ylQgHdL+zI0=",
+											"_parent": {
+												"$ref": "AAAAAAF4gzLUarFTlWM="
+											},
+											"model": {
+												"$ref": "AAAAAAF4ylQgAtL7G0s="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 681,
+											"width": 167,
+											"height": 13,
+											"text": "-role: Role",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 784,
 									"top": 601,
 									"width": 177,
-									"height": 83
+									"height": 98
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -792,7 +809,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 784,
-									"top": 684,
+									"top": 699,
 									"width": 177,
 									"height": 10
 								},
@@ -834,7 +851,7 @@
 							"left": 784,
 							"top": 576,
 							"width": 177,
-							"height": 131,
+							"height": 133,
 							"nameCompartment": {
 								"$ref": "AAAAAAF4gzLUarFO2cw="
 							},
@@ -4989,7 +5006,7 @@
 								"$ref": "AAAAAAF4gy2X7rDbLyg="
 							},
 							"lineStyle": 1,
-							"points": "646:461;789:575",
+							"points": "646:462;788:575",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4uMd98bGdBjE="
@@ -5022,8 +5039,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 795,
-									"top": 735,
+									"left": 794,
+									"top": 736,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -5043,8 +5060,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 782,
-									"top": 727,
+									"left": 781,
+									"top": 728,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -5064,8 +5081,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 820,
-									"top": 750,
+									"left": 819,
+									"top": 751,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -5083,7 +5100,7 @@
 								"$ref": "AAAAAAF4gzMJWrF4s+4="
 							},
 							"lineStyle": 1,
-							"points": "783:791;833:707",
+							"points": "783:791;832:709",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4uMeLerIaOUM="
@@ -5117,7 +5134,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 934,
-									"top": 740,
+									"top": 741,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -5138,7 +5155,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 922,
-									"top": 749,
+									"top": 750,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -5159,7 +5176,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 957,
-									"top": 721,
+									"top": 722,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -5177,7 +5194,7 @@
 								"$ref": "AAAAAAF4uIoRy41nxjQ="
 							},
 							"lineStyle": 1,
-							"points": "970:767;923:707",
+							"points": "969:767;924:709",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF4uMiNCrXKYoc="
@@ -7373,9 +7390,9 @@
 										"$ref": "AAAAAAF4yjn8s34aDfY="
 									},
 									"font": "Arial;13;0",
-									"left": 1386,
+									"left": 1385,
 									"top": 303,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -7966,7 +7983,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "People",
+					"name": "Person",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -8018,6 +8035,18 @@
 							"name": "surname",
 							"visibility": "private",
 							"type": "string"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAF4ylQgAtL7G0s=",
+							"_parent": {
+								"$ref": "AAAAAAF4gzLUarFLXLQ="
+							},
+							"name": "role",
+							"visibility": "private",
+							"type": {
+								"$ref": "AAAAAAF4uMNzHqOo18c="
+							}
 						}
 					],
 					"isAbstract": true
@@ -8216,7 +8245,6 @@
 								"reference": {
 									"$ref": "AAAAAAF4gzNBw7GjU3U="
 								},
-								"navigable": false,
 								"multiplicity": "1"
 							},
 							"end2": {
@@ -8228,6 +8256,7 @@
 								"reference": {
 									"$ref": "AAAAAAF4yjDyYFPUyGI="
 								},
+								"navigable": false,
 								"multiplicity": "*"
 							}
 						}
@@ -8348,7 +8377,6 @@
 								"reference": {
 									"$ref": "AAAAAAF4gzNperHNZZI="
 								},
-								"navigable": false,
 								"multiplicity": "1"
 							},
 							"end2": {
@@ -8360,6 +8388,7 @@
 								"reference": {
 									"$ref": "AAAAAAF4yjDyYFPUyGI="
 								},
+								"navigable": false,
 								"multiplicity": "*"
 							}
 						}
