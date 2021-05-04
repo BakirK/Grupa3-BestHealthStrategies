@@ -7858,6 +7858,7 @@
 											"top": 614,
 											"width": 193.29248046875,
 											"height": 13,
+											"underline": true,
 											"text": "-currentApi: ApiCalls",
 											"horizontalAlignment": 0
 										}
@@ -11275,6 +11276,7 @@
 							},
 							"name": "currentApi",
 							"visibility": "private",
+							"isStatic": true,
 							"type": {
 								"$ref": "AAAAAAF4uKB8TdWlPA0="
 							}
