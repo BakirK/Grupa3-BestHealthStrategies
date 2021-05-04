@@ -1833,23 +1833,6 @@
 									"subViews": [
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF4g1RYGLOBc3A=",
-											"_parent": {
-												"$ref": "AAAAAAF4g1QGWbNcQ7s="
-											},
-											"model": {
-												"$ref": "AAAAAAF4g1RYDbN+0iQ="
-											},
-											"font": "Arial;13;0",
-											"left": 1229,
-											"top": 110,
-											"width": 133.681640625,
-											"height": 13,
-											"text": "-id: integer {id}",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAF4g1R2o7OJwi0=",
 											"_parent": {
 												"$ref": "AAAAAAF4g1QGWbNcQ7s="
@@ -1859,7 +1842,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1229,
-											"top": 125,
+											"top": 110,
 											"width": 133.681640625,
 											"height": 13,
 											"text": "-calories: integer",
@@ -1876,7 +1859,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1229,
-											"top": 140,
+											"top": 125,
 											"width": 133.681640625,
 											"height": 13,
 											"text": "-carbohydrates: integer",
@@ -1893,7 +1876,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1229,
-											"top": 155,
+											"top": 140,
 											"width": 133.681640625,
 											"height": 13,
 											"text": "-fat: integer",
@@ -1910,7 +1893,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1229,
-											"top": 170,
+											"top": 155,
 											"width": 133.681640625,
 											"height": 13,
 											"text": "-protein: integer",
@@ -1921,7 +1904,7 @@
 									"left": 1224,
 									"top": 105,
 									"width": 143.681640625,
-									"height": 83
+									"height": 68
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1934,7 +1917,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1224,
-									"top": 188,
+									"top": 173,
 									"width": 143.681640625,
 									"height": 10
 								},
@@ -9923,17 +9906,6 @@
 						}
 					],
 					"attributes": [
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAF4g1RYDbN+0iQ=",
-							"_parent": {
-								"$ref": "AAAAAAF4g1QGWLNU/9I="
-							},
-							"name": "id",
-							"visibility": "private",
-							"type": "integer",
-							"isID": true
-						},
 						{
 							"_type": "UMLAttribute",
 							"_id": "AAAAAAF4g1R2mLOGQXM=",
