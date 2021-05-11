@@ -16,7 +16,7 @@ namespace BestHealtStrategies.Models
 
         public static string ApiKey { get; set; } = "51efcf710ac84199993836a5d7bcd080";
         private static readonly Lazy<SpoonacularApi> lazy = new Lazy<SpoonacularApi>(() => new SpoonacularApi());
-        private UriTemplate template = new UriTemplate("/mealplanner/generate?timeFrame=week&targetCalories={cal}&diet={diet}&exclude={intolerances}&apiKey=51efcf710ac84199993836a5d7bcd080");
+        // private UriTemplate template = new UriTemplate("/mealplanner/generate?timeFrame=week&targetCalories={cal}&diet={diet}&exclude={intolerances}&apiKey=51efcf710ac84199993836a5d7bcd080");
         private static Uri Prefix = new Uri("https://api.spoonacular.com");
 
         public static SpoonacularApi Instance {
