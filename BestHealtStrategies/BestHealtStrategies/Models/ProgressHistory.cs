@@ -9,7 +9,7 @@ namespace BestHealtStrategies.Models
 {
     public class ProgressHistory
     {
-        [Required]
+        [Required, DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
         [Required]
         public int Weight { get; set; }

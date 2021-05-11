@@ -19,9 +19,9 @@ namespace BestHealtStrategies.Models
         }
         [Key, Required]
         public int ID { get; set; }
-        [Required]
+        [Required, DataType(DataType.DateTime)]
         public DateTime StartDate { get; set; }
-        [Required]
+        [Required, DataType(DataType.DateTime)]
         public DateTime EndDate { get; set; }
         [Required]
         public Nutrient Nutrient { get; set; }

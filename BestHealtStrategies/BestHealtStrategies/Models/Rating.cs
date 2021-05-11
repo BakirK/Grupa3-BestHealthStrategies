@@ -30,7 +30,7 @@ namespace BestHealtStrategies.Models
                 Value = value;
             }
         }
-        [Required]
+        [Required, DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
         // TODO fk
         [Required, ForeignKey("DailyMealId")]
