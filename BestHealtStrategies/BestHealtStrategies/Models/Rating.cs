@@ -32,10 +32,9 @@ namespace BestHealtStrategies.Models
         }
         [Required, DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
-        // TODO fk
-        [Required, ForeignKey("DailyMealId")]
+        [Key, Required, ForeignKey("DailyMealPlan")]
         public int DailyMealId { get; set; }
-        [Required, ForeignKey("DailyMealId")]
+        [Key, Required, ForeignKey("User")]
         public int UserID { get; set; }
     }
 }
