@@ -8,20 +8,20 @@ namespace BestHealtStrategies.Models
 {
     public class Nutrient
     {
-        public Nutrient(int calories, int carbs, int fats, int proteins)
+        public Nutrient(int calories, int carbohydrates, int fat, int protein)
         {
             Calories = calories;
-            Carbs = carbs;
-            Fats = fats;
-            Proteins = proteins;
+            Carbohydrates = carbohydrates;
+            Fat = fat;
+            Protein = protein;
         }
         [Required]
         public int Calories { get; set; }
         [Required]
-        public int Carbs { get; set; }
+        public int Carbohydrates { get; set; }
         [Required]
-        public int Fats { get; set; }
+        public int Fat { get; set; }
         [Required]
-        public int Proteins { get; set; }
+        public int Protein { get; set; }
     }
 }
