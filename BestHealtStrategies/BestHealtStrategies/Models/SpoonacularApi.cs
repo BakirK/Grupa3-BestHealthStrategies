@@ -5,6 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using System.Net.Http;
+using System.Text.Json;
+using Newtonsoft.Json;
+using static BestHealtStrategies.Models.ValueObjects.ValueObjects;
+using Newtonsoft.Json.Linq;
 
 namespace BestHealtStrategies.Models
 {
@@ -27,25 +32,72 @@ namespace BestHealtStrategies.Models
         }
         public Meal getMeal(int id)
         {
-            throw new NotImplementedException();
+            UriBuilder builder = new UriBuilder("https://api.spoonacular.com/recipes/" + id + "/information?apiKey=51efcf710ac84199993836a5d7bcd080");
+            HttpClient client = new HttpClient();
+            var result = client.GetAsync(builder.Uri).Result;
+            using (StreamReader sr = new StreamReader(result.Content.ReadAsStreamAsync().Result))
+            {
+                Console.WriteLine(sr.ReadToEnd());
+                Meal meal = JsonConvert.DeserializeObject<Meal>(sr.ReadToEnd());
+                return meal;
+            }
         }
 
         public List<DailyMealPlan> getWeeklyMealPlan(User user)
         {
-            // TODO
+            List<DailyMealPlan> weeklyMealPlan = new List<DailyMealPlan>();
+            UriBuilder builder = new UriBuilder("https://api.spoonacular.com/mealplanner/generate");
+            string query = "timeFrame=week&targetCalories=" + user.TargetCalories + "&diet=" + 
+                            user.Diet.ToString() + "&apiKey=" + ApiKey + "&exclude=";
+            builder.Query = query;
+            foreach (Intolerance intolerance in user.Intolerances)
+            {
+                query += intolerance.ToString() + ",";
+            }
+            HttpClient client = new HttpClient();
+            var result = client.GetAsync(builder.Uri).Result;
+            using (StreamReader sr = new StreamReader(result.Content.ReadAsStreamAsync().Result))
+            {
+                JObject json = JObject.Parse(sr.ReadToEnd());
+                // parse week array of daily meals
+                IEnumerable<JToken> week = json.SelectToken("week");
 
-            throw new NotImplementedException();
-        }
+                foreach (JToken dayy in week)
+                {
+                    // parse nutrient object
+                    // select self because c#
+                    JToken day = dayy.First();
+                    JToken nutrients = day.SelectToken("nutrients");
+                    Console.WriteLine(nutrients);
+                    Console.WriteLine(nutrients.ToString());
+                    Nutrient nutrient = JsonConvert.DeserializeObject<Nutrient>(nutrients.ToString());
 
-        private async Task<string> GetAsync(string uri)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+                    DailyMealPlan dailyMealPlan = new DailyMealPlan();
+                    //todo - id za daily meal plan
+                    dailyMealPlan.StartDate = DateTime.Now;
+                    dailyMealPlan.EndDate = DateTime.Now.AddDays(7);
+                    dailyMealPlan.User = user;
+                    dailyMealPlan.UserID = user.ID;
+                    dailyMealPlan.Nutrient = nutrient;
 
-            using HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync();
-            using Stream stream = response.GetResponseStream();
-            using StreamReader reader = new StreamReader(stream);
-            return await reader.ReadToEndAsync();
+                    List<Meal> dailyMeals = new List<Meal>();
+
+                    // parse json array of 3 daily meals
+                    IEnumerable<JToken> meals = day.SelectTokens("meals");
+                    foreach (JToken m in meals)
+                    {
+                        // select self because c#
+                        JToken mealToken = m.First();
+                        int id = (int)mealToken.SelectToken("id");
+                        Meal meal = getMeal(id);
+                        dailyMeals.Add(meal);
+                    }
+                    dailyMealPlan.Meals = dailyMeals;
+
+                    weeklyMealPlan.Add(dailyMealPlan);
+                }
+                return weeklyMealPlan;
+            }
         }
     }
 }
