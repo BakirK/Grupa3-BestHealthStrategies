@@ -6,12 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\20210524164403_nova.cs" />
-    <Compile Remove="Data\Migrations\20210524164403_nova.Designer.cs" />
-    <Compile Remove="Data\Migrations\20210524171820_nova.cs" />
-    <Compile Remove="Data\Migrations\20210524171820_nova.Designer.cs" />
-    <Compile Remove="Data\Migrations\20210524182936_nova.cs" />
-    <Compile Remove="Data\Migrations\20210524182936_nova.Designer.cs" />
+    <Compile Remove="Migrations\20210524183853_nova.cs" />
+    <Compile Remove="Migrations\20210524183853_nova.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
