@@ -9,6 +9,7 @@ namespace BestHealtStrategies.Models
 {
     public class Employee : Person
     {
+        public Employee() { }
         public Employee(int iD, string email, string password, string name, string surname) :
             base(iD, email, password, name, surname, Role.EMPLOYEE)
         {

@@ -11,10 +11,7 @@ namespace BestHealtStrategies.Models
 {
     public class User : Person
     {
-        public User(int iD, string email, string password, string name, string surname) : 
-            base(iD, email, password, name, surname, Role.USER)
-        {
-        }
+        public User() {}
 
         public User(int iD, string email, string password, string name, string surname, 
             int age, int height, int weight, Gender gender, ActivityLevel activity, 
@@ -56,12 +53,12 @@ namespace BestHealtStrategies.Models
         [Required, EnumDataType(typeof(Diet))]
         public Diet Diet { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
+        [ScaffoldColumn(false)]
         public double Bmi { get; set; }
 
         public List<Intolerance> Intolerances { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
+        [ScaffoldColumn(false)]
         public double TargetCalories { get; set; }
 
         [InverseProperty("User")]

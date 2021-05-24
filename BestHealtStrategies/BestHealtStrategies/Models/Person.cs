@@ -9,6 +9,7 @@ namespace BestHealtStrategies.Models
 {
     public abstract class Person
     {
+        protected Person() { }
         protected Person(int iD, string email, string password, string name, string surname, Role role)
         {
             ID = iD;
@@ -18,7 +19,7 @@ namespace BestHealtStrategies.Models
             Surname = surname;
             Role = role;
         }
-        [Required, Key]
+        [Key]
         public int ID { get; set; }
         [EmailAddress, Required]
         public string Email { get; set; }
@@ -28,7 +29,7 @@ namespace BestHealtStrategies.Models
         public string Name { get; set; }
         [Required, RegularExpression(@"[a-zA-Z ]+")]
         public string Surname { get; set; }
-        [Required, EnumDataType(typeof(Role))]
+        [EnumDataType(typeof(Role)), ScaffoldColumn(false)]
         public Role Role { get; set; }
     }
 }
