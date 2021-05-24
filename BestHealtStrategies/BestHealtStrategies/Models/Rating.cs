@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,15 +10,20 @@ namespace BestHealtStrategies.Models
 {
     public class Rating
     {
-        public Rating(int value, DateTime date, int dailyMealId, int userID)
+        public Rating() { }
+        public Rating(int iD, int value, DateTime date, int dailyMealId, int userID)
         {
             if (value < 0 || value > 5)
-                    throw new ArgumentOutOfRangeException("Value out of range");
+                throw new ArgumentOutOfRangeException("Value out of range");
+            ID = iD;
             Value = value;
             Date = date;
             DailyMealId = dailyMealId;
             UserID = userID;
         }
+
+        [Key]
+        public int ID { get; set; }
         [Required, Range(0, 5, ErrorMessage = "Rating value must be between 0 and 5")]
         public int Value
         {
@@ -32,9 +38,9 @@ namespace BestHealtStrategies.Models
         }
         [Required, DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
-        [Key, Required, ForeignKey("DailyMealPlan")]
+        [Required, ForeignKey("DailyMealPlan")]
         public int DailyMealId { get; set; }
-        [Key, Required, ForeignKey("User")]
+        [Required, ForeignKey("User")]
         public int UserID { get; set; }
     }
 }

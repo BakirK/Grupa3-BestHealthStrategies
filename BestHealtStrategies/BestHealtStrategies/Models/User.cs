@@ -11,10 +11,15 @@ namespace BestHealtStrategies.Models
 {
     public class User : Person
     {
+        public User(int iD, string email, string password, string name, string surname) : 
+            base(iD, email, password, name, surname, Role.USER)
+        {
+        }
+
         public User(int iD, string email, string password, string name, string surname, 
             int age, int height, int weight, Gender gender, ActivityLevel activity, 
             Benefit benefit, Diet diet, List<Intolerance> intolerances, 
-            List<ProgressHistory> progressHistroy, List<DailyMealPlan> weeklyMealPlan) : 
+            List<ProgressHistory> progressHistroy, List<DailyMealPlan> weeklyMealPlan, int personId) : 
             base(iD, email, password, name, surname, Role.USER)
         {
             Age = age;
@@ -29,6 +34,7 @@ namespace BestHealtStrategies.Models
             TargetCalories = CalculateTargetCalories();
             ProgressHistroy = progressHistroy;
             WeeklyMealPlan = weeklyMealPlan;
+            PersonId = personId;
         }
         [Required]
         public int Age { get; set; }
@@ -57,7 +63,7 @@ namespace BestHealtStrategies.Models
         [NotMapped]
         public List<Intolerance> Intolerances { get; set; }
 
-        [Required]
+        [HiddenInput(DisplayValue = false)]
         public double TargetCalories { get; set; }
 
         [NotMapped]
@@ -65,6 +71,8 @@ namespace BestHealtStrategies.Models
 
         [NotMapped]
         public List<DailyMealPlan> WeeklyMealPlan { get; set; }
+        [HiddenInput(DisplayValue = false), ForeignKey("Person")]
+        public int PersonId { get; set; }
 
         private double CalculateTargetCalories()
         {
