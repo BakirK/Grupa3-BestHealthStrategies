@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BestHealtStrategies.Data;
 using BestHealtStrategies.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BestHealtStrategies.Controllers
 {
@@ -18,7 +19,8 @@ namespace BestHealtStrategies.Controllers
         {
             _context = context;
         }
-
+        // [Authorize]
+        [Authorize(Roles = "Administrator")]
         // GET: Administrators
         public async Task<IActionResult> Index()
         {

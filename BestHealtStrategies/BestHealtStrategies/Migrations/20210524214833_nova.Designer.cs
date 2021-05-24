@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestHealtStrategies.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210524192519_nova")]
+    [Migration("20210524214833_nova")]
     partial class nova
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.12")
+                .HasAnnotation("ProductVersion", "3.1.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("BestHealtStrategies.Models.Administrator", b =>

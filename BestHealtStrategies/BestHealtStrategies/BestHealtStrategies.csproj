@@ -10,6 +10,12 @@
     <Compile Remove="Migrations\20210524183853_nova.Designer.cs" />
     <Compile Remove="Migrations\20210524184629_nova.cs" />
     <Compile Remove="Migrations\20210524184629_nova.Designer.cs" />
+    <Compile Remove="Migrations\20210524192519_nova.cs" />
+    <Compile Remove="Migrations\20210524192519_nova.Designer.cs" />
+    <Compile Remove="Migrations\20210524210031_nova.cs" />
+    <Compile Remove="Migrations\20210524210031_nova.Designer.cs" />
+    <Compile Remove="Migrations\20210524213911_nova.cs" />
+    <Compile Remove="Migrations\20210524213911_nova.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
