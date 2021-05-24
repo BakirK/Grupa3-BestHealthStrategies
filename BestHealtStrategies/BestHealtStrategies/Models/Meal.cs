@@ -9,6 +9,7 @@ namespace BestHealtStrategies.Models
 {
     public class Meal
     {
+        public Meal() { }
         public Meal(
             int iD, 
             string title, 
@@ -16,6 +17,7 @@ namespace BestHealtStrategies.Models
             int readyInMinutes, 
             int servings, 
             string sourceURL, 
+            DailyMealPlan dailyMealPlan,
             int mealPlanID, 
             string summary, 
             string instructions)
@@ -26,6 +28,7 @@ namespace BestHealtStrategies.Models
             ReadyInMinutes = readyInMinutes;
             Servings = servings;
             SourceURL = sourceURL;
+            DailyMealPlan = dailyMealPlan;
             MealPlanID = mealPlanID;
             Summary = summary;
             Instructions = instructions;
@@ -45,8 +48,8 @@ namespace BestHealtStrategies.Models
         public string SourceURL { get; set; }
         [Required, ForeignKey("DailyMealPlan")]
         public int MealPlanID { get; set; }
-        [Required, NotMapped]
-        public DailyMealPlan MealPlan { get; set; }
+        [Required]
+        public DailyMealPlan DailyMealPlan { get; set; }
         [Required]
         public string Summary { get; set; }
         [Required]

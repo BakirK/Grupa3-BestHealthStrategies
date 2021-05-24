@@ -60,17 +60,18 @@ namespace BestHealtStrategies.Models
         [HiddenInput(DisplayValue = false)]
         public double Bmi { get; set; }
 
-        [NotMapped]
         public List<Intolerance> Intolerances { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public double TargetCalories { get; set; }
 
-        [NotMapped]
+        [InverseProperty("User")]
         public List<ProgressHistory> ProgressHistroy { get; set; }
 
-        [NotMapped]
+        [InverseProperty("User")]
         public List<DailyMealPlan> WeeklyMealPlan { get; set; }
+        [InverseProperty("User")]
+        public List<Rating> Raitings { get; set; }
         [HiddenInput(DisplayValue = false), ForeignKey("Person")]
         public int PersonId { get; set; }
 

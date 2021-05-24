@@ -33,16 +33,17 @@ namespace BestHealtStrategies.Models
         public int ID { get; set; }
         [ForeignKey("User"), Required]
         public int UserID { get; set; }
-        [Required]
         public User User { get; set; }
 
         [Required, DataType(DataType.DateTime)]
         public DateTime StartDate { get; set; }
         [Required, DataType(DataType.DateTime)]
         public DateTime EndDate { get; set; }
-        [Required]
+        [InverseProperty("DailyMealPlan")]
         public Nutrient Nutrient { get; set; }
-        [Required, NotMapped]
+        [InverseProperty("DailyMealPlan")]
         public List<Meal> Meals { get; set; }
+        [InverseProperty("DailyMealPlan")]
+        public List<Rating> Raitings { get; set; }
     }
 }

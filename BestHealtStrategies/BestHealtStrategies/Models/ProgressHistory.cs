@@ -11,25 +11,29 @@ namespace BestHealtStrategies.Models
     public class ProgressHistory
     {
         public ProgressHistory() { }
+
         public ProgressHistory(
-            int id,
+            int iD, 
             DateTime date, 
             int weight, 
             ActivityLevel activity, 
             double bmi, 
             double height, 
             int age, 
+            User user, 
             int userID)
         {
-            ID = id;
+            ID = iD;
             Date = date;
             Weight = weight;
             Activity = activity;
             Bmi = bmi;
             Height = height;
             Age = age;
+            User = user;
             UserID = userID;
         }
+
         [Key]
         public int ID { get; set; }
         [Required, DataType(DataType.DateTime)]
@@ -44,7 +48,6 @@ namespace BestHealtStrategies.Models
         public double Height { get; set; }
         [Required]
         public int Age { get; set; }
-        [Required, NotMapped]
         public User User { get; set; }
         [Required, ForeignKey("User")]
         public int UserID { get; set; }

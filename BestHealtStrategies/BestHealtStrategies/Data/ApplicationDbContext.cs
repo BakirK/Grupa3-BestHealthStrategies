@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static BestHealtStrategies.Models.ValueObjects.ValueObjects;
 
 namespace BestHealtStrategies.Data
 {
@@ -24,6 +25,13 @@ namespace BestHealtStrategies.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+                .Property(e => e.Intolerances)
+                .HasConversion(
+                    v => string.Join(',', v.ToString()),
+                    v => ParseIntolerances(v.Split(",", StringSplitOptions.RemoveEmptyEntries))
+                );
+            modelBuilder.Entity<Administrator>().HasData(new Administrator(-1, "admin@admin.ba", "admin", "b", "k"));
             modelBuilder.Entity<Meal>().ToTable("Meal");
             modelBuilder.Entity<Administrator>().ToTable("Administrator");
             modelBuilder.Entity<DailyMealPlan>().ToTable("DailyMealPlan");
@@ -34,6 +42,16 @@ namespace BestHealtStrategies.Data
             modelBuilder.Entity<ProgressHistory>().ToTable("ProgressHistory");
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        private List<Intolerance> ParseIntolerances(string[] strings)
+        {
+            List<Intolerance> intolerances = new List<Intolerance>();
+            foreach (string s in strings)
+            {
+                intolerances.Add((Intolerance)Enum.Parse(typeof(Intolerance), s));
+            }
+            return intolerances;
         }
     }
 }

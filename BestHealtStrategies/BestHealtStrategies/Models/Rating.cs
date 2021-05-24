@@ -11,15 +11,23 @@ namespace BestHealtStrategies.Models
     public class Rating
     {
         public Rating() { }
-        public Rating(int iD, int value, DateTime date, int dailyMealId, int userID)
+
+        public Rating(
+            int iD, 
+            int value,
+            DateTime date, 
+            int dailyMealId, 
+            DailyMealPlan dailyMealPlan, 
+            int userID, 
+            User user)
         {
-            if (value < 0 || value > 5)
-                throw new ArgumentOutOfRangeException("Value out of range");
             ID = iD;
             Value = value;
             Date = date;
             DailyMealId = dailyMealId;
+            DailyMealPlan = dailyMealPlan;
             UserID = userID;
+            User = user;
         }
 
         [Key]
@@ -40,7 +48,9 @@ namespace BestHealtStrategies.Models
         public DateTime Date { get; set; }
         [Required, ForeignKey("DailyMealPlan")]
         public int DailyMealId { get; set; }
+        public DailyMealPlan DailyMealPlan { get; set; }
         [Required, ForeignKey("User")]
         public int UserID { get; set; }
+        public User User { get; set; }
     }
 }
