@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestHealtStrategies.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210524184629_nova")]
+    [Migration("20210524192519_nova")]
     partial class nova
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -289,9 +289,6 @@ namespace BestHealtStrategies.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");

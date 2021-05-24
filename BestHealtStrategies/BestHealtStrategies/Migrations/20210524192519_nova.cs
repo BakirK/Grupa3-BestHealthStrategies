@@ -102,8 +102,7 @@ namespace BestHealtStrategies.Migrations
                     Diet = table.Column<int>(nullable: false),
                     Bmi = table.Column<double>(nullable: false),
                     Intolerances = table.Column<string>(nullable: true),
-                    TargetCalories = table.Column<double>(nullable: false),
-                    PersonId = table.Column<int>(nullable: false)
+                    TargetCalories = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
