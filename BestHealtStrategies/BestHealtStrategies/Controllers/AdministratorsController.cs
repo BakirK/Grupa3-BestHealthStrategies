@@ -20,7 +20,7 @@ namespace BestHealtStrategies.Controllers
             _context = context;
         }
         // [Authorize]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "administrator")]
         // GET: Administrators
         public async Task<IActionResult> Index()
         {

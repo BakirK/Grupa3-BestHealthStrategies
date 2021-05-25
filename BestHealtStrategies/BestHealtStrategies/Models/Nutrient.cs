@@ -18,6 +18,13 @@ namespace BestHealtStrategies.Models
             Fat = fat;
             Protein = protein;
         }
+
+        public Nutrient(int iD, double calories, double carbohydrates, double fat, double protein, int? dailyMealPlanId, DailyMealPlan dailyMealPlan) : this(iD, calories, carbohydrates, fat, protein)
+        {
+            DailyMealPlanId = dailyMealPlanId;
+            DailyMealPlan = dailyMealPlan;
+        }
+
         [Key]
         public int ID { get; set; }
         [Required]
@@ -29,7 +36,7 @@ namespace BestHealtStrategies.Models
         [Required]
         public double Protein { get; set; }
         [ForeignKey("DailyMealPlan")]
-        public int DailyMealPlanId { get; set; }
+        public int? DailyMealPlanId { get; set; }
         public DailyMealPlan DailyMealPlan { get; set; }
 
     }

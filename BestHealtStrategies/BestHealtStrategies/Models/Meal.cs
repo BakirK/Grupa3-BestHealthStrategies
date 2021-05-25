@@ -18,7 +18,7 @@ namespace BestHealtStrategies.Models
             int servings, 
             string sourceURL, 
             DailyMealPlan dailyMealPlan,
-            int mealPlanID, 
+            int? mealPlanID, 
             string summary, 
             string instructions)
         {
@@ -46,8 +46,8 @@ namespace BestHealtStrategies.Models
         public int Servings { get; set; }
         [Required, Url]
         public string SourceURL { get; set; }
-        [Required, ForeignKey("DailyMealPlan")]
-        public int MealPlanID { get; set; }
+        [ForeignKey("DailyMealPlan")]
+        public int? MealPlanID { get; set; }
         [Required]
         public DailyMealPlan DailyMealPlan { get; set; }
         [Required]

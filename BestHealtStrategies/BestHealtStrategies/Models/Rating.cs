@@ -16,9 +16,9 @@ namespace BestHealtStrategies.Models
             int iD, 
             int value,
             DateTime date, 
-            int dailyMealId, 
+            int? dailyMealId, 
             DailyMealPlan dailyMealPlan, 
-            int userID, 
+            int? userID, 
             User user)
         {
             ID = iD;
@@ -46,11 +46,11 @@ namespace BestHealtStrategies.Models
         }
         [Required, DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
-        [Required, ForeignKey("DailyMealPlan")]
-        public int DailyMealId { get; set; }
+        [ForeignKey("DailyMealPlan")]
+        public int? DailyMealId { get; set; }
         public DailyMealPlan DailyMealPlan { get; set; }
-        [Required, ForeignKey("User")]
-        public int UserID { get; set; }
+        [ForeignKey("User")]
+        public int? UserID { get; set; }
         public User User { get; set; }
     }
 }

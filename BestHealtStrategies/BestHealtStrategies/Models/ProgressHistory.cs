@@ -21,7 +21,7 @@ namespace BestHealtStrategies.Models
             double height, 
             int age, 
             User user, 
-            int userID)
+            int? userID)
         {
             ID = iD;
             Date = date;
@@ -49,7 +49,7 @@ namespace BestHealtStrategies.Models
         [Required]
         public int Age { get; set; }
         public User User { get; set; }
-        [Required, ForeignKey("User")]
-        public int UserID { get; set; }
+        [ForeignKey("User")]
+        public int? UserID { get; set; }
     }
 }
