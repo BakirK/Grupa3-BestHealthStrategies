@@ -77,7 +77,7 @@ namespace BestHealtStrategies.Models
                     dailyMealPlan.StartDate = DateTime.Now;
                     dailyMealPlan.EndDate = DateTime.Now.AddDays(7);
                     dailyMealPlan.User = user;
-                    dailyMealPlan.UserID = user.ID;
+                    dailyMealPlan.UserId = user.Id;
                     dailyMealPlan.Nutrient = nutrient;
 
                     List<Meal> dailyMeals = new List<Meal>();

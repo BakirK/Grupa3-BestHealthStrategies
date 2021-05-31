@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,24 +8,23 @@ using static BestHealtStrategies.Models.ValueObjects.ValueObjects;
 
 namespace BestHealtStrategies.Models
 {
-    public abstract class Person
+    public abstract class Person: IdentityUser
     {
         protected Person() { }
-        protected Person(int iD, string email, string password, string name, string surname, Role role)
+        protected Person(string name, string surname, Role role)
         {
-            ID = iD;
-            Email = email;
-            Password = password;
             Name = name;
             Surname = surname;
             Role = role;
         }
-        [Key]
-        public int ID { get; set; }
-        [EmailAddress, Required]
-        public string Email { get; set; }
-        [Required]
-        public string Password { get; set; }
+        protected Person(string name, string surname, Role role, string email)
+        {
+            Name = name;
+            Surname = surname;
+            Role = role;
+            Email = email;
+            NormalizedEmail = email.ToUpper();
+        }
         [Required, RegularExpression(@"[a-zA-Z ]+")]
         public string Name { get; set; }
         [Required, RegularExpression(@"[a-zA-Z ]+")]

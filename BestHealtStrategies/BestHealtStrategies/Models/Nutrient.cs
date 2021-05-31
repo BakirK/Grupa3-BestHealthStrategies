@@ -12,7 +12,7 @@ namespace BestHealtStrategies.Models
         public Nutrient() { }
         public Nutrient(int id, double calories, double carbohydrates, double fat, double protein)
         {
-            ID = id;
+            Id = id;
             Calories = calories;
             Carbohydrates = carbohydrates;
             Fat = fat;
@@ -26,7 +26,7 @@ namespace BestHealtStrategies.Models
         }
 
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
         [Required]
         public double Calories { get; set; }
         [Required]

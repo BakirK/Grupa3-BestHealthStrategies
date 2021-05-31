@@ -17,21 +17,21 @@ namespace BestHealtStrategies.Models
             int value,
             DateTime date, 
             int? dailyMealId, 
-            DailyMealPlan dailyMealPlan, 
-            int? userID, 
+            DailyMealPlan dailyMealPlan,
+            string userId, 
             User user)
         {
-            ID = iD;
+            Id = iD;
             Value = value;
             Date = date;
             DailyMealId = dailyMealId;
             DailyMealPlan = dailyMealPlan;
-            UserID = userID;
+            UserId = userId;
             User = user;
         }
 
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
         [Required, Range(0, 5, ErrorMessage = "Rating value must be between 0 and 5")]
         public int Value
         {
@@ -50,7 +50,7 @@ namespace BestHealtStrategies.Models
         public int? DailyMealId { get; set; }
         public DailyMealPlan DailyMealPlan { get; set; }
         [ForeignKey("User")]
-        public int? UserID { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
     }
 }

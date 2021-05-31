@@ -13,11 +13,11 @@ namespace BestHealtStrategies.Models
     {
         public User() {}
 
-        public User(int iD, string email, string password, string name, string surname, 
+        public User(string name, string surname, 
             int age, int height, int weight, Gender gender, ActivityLevel activity, 
             Benefit benefit, Diet diet, List<Intolerance> intolerances, 
             List<ProgressHistory> progressHistroy, List<DailyMealPlan> weeklyMealPlan) : 
-            base(iD, email, password, name, surname, Role.USER)
+            base(name, surname, Role.USER)
         {
             Age = age;
             Height = height;
