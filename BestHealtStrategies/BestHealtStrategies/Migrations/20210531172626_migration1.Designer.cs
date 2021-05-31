@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestHealtStrategies.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210525111530_migration1")]
+    [Migration("20210531172626_migration1")]
     partial class migration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,49 +23,70 @@ namespace BestHealtStrategies.Migrations
 
             modelBuilder.Entity("BestHealtStrategies.Models.Administrator", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
+                    b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Administrator");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = -1,
-                            Email = "admin@admin.ba",
-                            Name = "b",
-                            Password = "admin",
-                            Role = 0,
-                            Surname = "k"
-                        });
                 });
 
             modelBuilder.Entity("BestHealtStrategies.Models.DailyMealPlan", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -76,47 +97,79 @@ namespace BestHealtStrategies.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("DailyMealPlan");
                 });
 
             modelBuilder.Entity("BestHealtStrategies.Models.Employee", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
+                    b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Employee");
                 });
@@ -167,7 +220,7 @@ namespace BestHealtStrategies.Migrations
 
             modelBuilder.Entity("BestHealtStrategies.Models.Nutrient", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -187,7 +240,7 @@ namespace BestHealtStrategies.Migrations
                     b.Property<double>("Protein")
                         .HasColumnType("float");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("DailyMealPlanId")
                         .IsUnique()
@@ -198,7 +251,7 @@ namespace BestHealtStrategies.Migrations
 
             modelBuilder.Entity("BestHealtStrategies.Models.ProgressHistory", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -218,22 +271,22 @@ namespace BestHealtStrategies.Migrations
                     b.Property<double>("Height")
                         .HasColumnType("float");
 
-                    b.Property<int?>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("ProgressHistory");
                 });
 
             modelBuilder.Entity("BestHealtStrategies.Models.Rating", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -244,27 +297,28 @@ namespace BestHealtStrategies.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Value")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("DailyMealId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Rating");
                 });
 
             modelBuilder.Entity("BestHealtStrategies.Models.User", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<int>("Activity")
                         .HasColumnType("int");
@@ -278,12 +332,19 @@ namespace BestHealtStrategies.Migrations
                     b.Property<double>("Bmi")
                         .HasColumnType("float");
 
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Diet")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
@@ -294,16 +355,38 @@ namespace BestHealtStrategies.Migrations
                     b.Property<string>("Intolerances")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
@@ -312,12 +395,115 @@ namespace BestHealtStrategies.Migrations
                     b.Property<double>("TargetCalories")
                         .HasColumnType("float");
 
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ff06b223-45b2-4556-95b6-2e5ed16d81c9",
+                            AccessFailedCount = 0,
+                            Activity = 0,
+                            Age = 0,
+                            Benefit = 0,
+                            Bmi = 0.0,
+                            ConcurrencyStamp = "08337cc0-be1d-41a8-a4b5-7a4ad1213406",
+                            Diet = 0,
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            Gender = 0,
+                            Height = 0,
+                            LockoutEnabled = false,
+                            Name = "Admin",
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKPE+ptiverXhuV8Eau9ggI/OHy8JJ8E3vs4yJWObKA7hBWRQqU/XPJ3JAWu1cGPMw==",
+                            PhoneNumberConfirmed = false,
+                            Role = 0,
+                            SecurityStamp = "6XEUQE2NPXXCX5ZP2G5UE464PONO64WM",
+                            Surname = "Admin",
+                            TargetCalories = 0.0,
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com",
+                            Weight = 0
+                        },
+                        new
+                        {
+                            Id = "4922c26e-a27f-4faa-a685-593e945800fd",
+                            AccessFailedCount = 0,
+                            Activity = 1,
+                            Age = 21,
+                            Benefit = 3,
+                            Bmi = 0.0,
+                            ConcurrencyStamp = "29510329-fc0f-4d8f-b173-23a3985d5819",
+                            Diet = 1,
+                            Email = "emp@emp.com",
+                            EmailConfirmed = true,
+                            Gender = 0,
+                            Height = 185,
+                            Intolerances = "DAIRY,SOY",
+                            LockoutEnabled = true,
+                            Name = "Employee",
+                            NormalizedEmail = "EMP@EMP.COM",
+                            NormalizedUserName = "EMP@EMP.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEer+FUD/moTD9x26JCHAxg/u6I10TfQE7gkalp42Nk4nzcRCWe0I6h2apqBmDpK8w==",
+                            PhoneNumberConfirmed = false,
+                            Role = 1,
+                            SecurityStamp = "LMPASNLSKERMILNMSV2LKW3PM6FV3PXI",
+                            Surname = "Employee",
+                            TargetCalories = 0.0,
+                            TwoFactorEnabled = false,
+                            UserName = "emp@emp.com",
+                            Weight = 74
+                        },
+                        new
+                        {
+                            Id = "26d10b61-c3e2-4863-bad6-6d0f4e131529",
+                            AccessFailedCount = 0,
+                            Activity = 1,
+                            Age = 21,
+                            Benefit = 3,
+                            Bmi = 0.0,
+                            ConcurrencyStamp = "a137d51a-e6c9-4c8b-aea2-d9aefca51d4b",
+                            Diet = 1,
+                            Email = "user@user.com",
+                            EmailConfirmed = true,
+                            Gender = 0,
+                            Height = 185,
+                            Intolerances = "DAIRY,SOY",
+                            LockoutEnabled = true,
+                            Name = "Bakir",
+                            NormalizedEmail = "USER@USER.COM",
+                            NormalizedUserName = "USER@USER.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPJn1nOxdkfLf8c3VeqvN93gXrXLkZ32Lz126ZAqSo7FLC4/cqxfIelp1EudM0QYKA==",
+                            PhoneNumberConfirmed = false,
+                            Role = 2,
+                            SecurityStamp = "PU6ZQF7NGAVGPNRR5ULZVOZ4NDSS4E6J",
+                            Surname = "Karovic",
+                            TargetCalories = 0.0,
+                            TwoFactorEnabled = false,
+                            UserName = "user@user.com",
+                            Weight = 74
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -350,21 +536,21 @@ namespace BestHealtStrategies.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "fc806605-eff0-4b5e-a3b5-35eed1bf4910",
+                            ConcurrencyStamp = "0a49ea63-41ba-4822-99e3-38412e29f186",
                             Name = "administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "131fa084-4eb9-4c8d-8a5d-ef42e5fe3315",
-                            Name = "Employee",
+                            ConcurrencyStamp = "c403ceba-6adf-4116-bf78-b141b119a038",
+                            Name = "employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "3da36613-bf32-431f-8ee2-978bb8edcfb7",
+                            ConcurrencyStamp = "49fbb019-65ed-47e4-a0bf-ee7bd5a6dd0f",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -392,121 +578,6 @@ namespace BestHealtStrategies.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "ff06b223-45b2-4556-95b6-2e5ed16d81c9",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "08337cc0-be1d-41a8-a4b5-7a4ad1213406",
-                            Email = "admin@admin.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@ADMIN.COM",
-                            NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKPE+ptiverXhuV8Eau9ggI/OHy8JJ8E3vs4yJWObKA7hBWRQqU/XPJ3JAWu1cGPMw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "6XEUQE2NPXXCX5ZP2G5UE464PONO64WM",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@admin.com"
-                        },
-                        new
-                        {
-                            Id = "26d10b61-c3e2-4863-bad6-6d0f4e131529",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "a137d51a-e6c9-4c8b-aea2-d9aefca51d4b",
-                            Email = "user@user.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = true,
-                            NormalizedEmail = "USER@USER.COM",
-                            NormalizedUserName = "USER@USER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPJn1nOxdkfLf8c3VeqvN93gXrXLkZ32Lz126ZAqSo7FLC4/cqxfIelp1EudM0QYKA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "PU6ZQF7NGAVGPNRR5ULZVOZ4NDSS4E6J",
-                            TwoFactorEnabled = false,
-                            UserName = "user@user.com"
-                        },
-                        new
-                        {
-                            Id = "4922c26e-a27f-4faa-a685-593e945800fd",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "29510329-fc0f-4d8f-b173-23a3985d5819",
-                            Email = "emp@emp.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = true,
-                            NormalizedEmail = "EMP@EMP.COM",
-                            NormalizedUserName = "EMP@EMP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEer+FUD/moTD9x26JCHAxg/u6I10TfQE7gkalp42Nk4nzcRCWe0I6h2apqBmDpK8w==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "LMPASNLSKERMILNMSV2LKW3PM6FV3PXI",
-                            TwoFactorEnabled = false,
-                            UserName = "emp@emp.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -579,13 +650,13 @@ namespace BestHealtStrategies.Migrations
                         },
                         new
                         {
-                            UserId = "26d10b61-c3e2-4863-bad6-6d0f4e131529",
-                            RoleId = "3"
+                            UserId = "4922c26e-a27f-4faa-a685-593e945800fd",
+                            RoleId = "2"
                         },
                         new
                         {
-                            UserId = "4922c26e-a27f-4faa-a685-593e945800fd",
-                            RoleId = "2"
+                            UserId = "26d10b61-c3e2-4863-bad6-6d0f4e131529",
+                            RoleId = "3"
                         });
                 });
 
@@ -614,7 +685,7 @@ namespace BestHealtStrategies.Migrations
                 {
                     b.HasOne("BestHealtStrategies.Models.User", "User")
                         .WithMany("WeeklyMealPlan")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BestHealtStrategies.Models.Meal", b =>
@@ -637,7 +708,7 @@ namespace BestHealtStrategies.Migrations
                 {
                     b.HasOne("BestHealtStrategies.Models.User", "User")
                         .WithMany("ProgressHistroy")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BestHealtStrategies.Models.Rating", b =>
@@ -648,7 +719,7 @@ namespace BestHealtStrategies.Migrations
 
                     b.HasOne("BestHealtStrategies.Models.User", "User")
                         .WithMany("Raitings")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -662,7 +733,7 @@ namespace BestHealtStrategies.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BestHealtStrategies.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -671,7 +742,7 @@ namespace BestHealtStrategies.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BestHealtStrategies.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -686,7 +757,7 @@ namespace BestHealtStrategies.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BestHealtStrategies.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -695,7 +766,7 @@ namespace BestHealtStrategies.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BestHealtStrategies.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

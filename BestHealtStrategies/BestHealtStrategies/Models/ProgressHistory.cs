@@ -20,10 +20,10 @@ namespace BestHealtStrategies.Models
             double bmi, 
             double height, 
             int age, 
-            User user, 
-            int? userID)
+            User user,
+            string userId)
         {
-            ID = iD;
+            Id = iD;
             Date = date;
             Weight = weight;
             Activity = activity;
@@ -31,11 +31,11 @@ namespace BestHealtStrategies.Models
             Height = height;
             Age = age;
             User = user;
-            UserID = userID;
+            UserId = userId;
         }
 
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
         [Required, DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
         [Required]
@@ -50,6 +50,6 @@ namespace BestHealtStrategies.Models
         public int Age { get; set; }
         public User User { get; set; }
         [ForeignKey("User")]
-        public int? UserID { get; set; }
+        public string UserId { get; set; }
     }
 }

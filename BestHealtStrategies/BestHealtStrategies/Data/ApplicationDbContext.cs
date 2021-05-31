@@ -9,7 +9,7 @@ using static BestHealtStrategies.Models.ValueObjects.ValueObjects;
 
 namespace BestHealtStrategies.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -26,39 +26,19 @@ namespace BestHealtStrategies.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // custom parser from list of enums to csv string and vice versa
             modelBuilder.Entity<User>()
                 .Property(e => e.Intolerances)
                 .HasConversion(
-                    v => string.Join(',', v.ToString()),
-                    v => ParseIntolerances(v.Split(",", StringSplitOptions.RemoveEmptyEntries))
+                    v => ConvertIntolerancesToCsvString(v),
+                    v => ParseIntolerancesFromCSV(v.Split(",", StringSplitOptions.RemoveEmptyEntries))
                 );
-            /*modelBuilder.Entity<IdentityUser>(entity => entity.Property(m => m.Id).HasMaxLength(85));
-            modelBuilder.Entity<IdentityUser>(entity => entity.Property(m => m.NormalizedEmail).HasMaxLength(85));
-            modelBuilder.Entity<IdentityUser>(entity => entity.Property(m => m.NormalizedUserName).HasMaxLength(85));
-
-            modelBuilder.Entity<IdentityRole>(entity => entity.Property(m => m.Id).HasMaxLength(85));
-            modelBuilder.Entity<IdentityRole>(entity => entity.Property(m => m.NormalizedName).HasMaxLength(85));
-
-            modelBuilder.Entity<IdentityUserLogin<string>>(entity => entity.Property(m => m.LoginProvider).HasMaxLength(85));
-            modelBuilder.Entity<IdentityUserLogin<string>>(entity => entity.Property(m => m.ProviderKey).HasMaxLength(85));
-            modelBuilder.Entity<IdentityUserLogin<string>>(entity => entity.Property(m => m.UserId).HasMaxLength(85));
-            modelBuilder.Entity<IdentityUserRole<string>>(entity => entity.Property(m => m.UserId).HasMaxLength(85));
-
-            modelBuilder.Entity<IdentityUserRole<string>>(entity => entity.Property(m => m.RoleId).HasMaxLength(85));
-
-            modelBuilder.Entity<IdentityUserToken<string>>(entity => entity.Property(m => m.UserId).HasMaxLength(85));
-            modelBuilder.Entity<IdentityUserToken<string>>(entity => entity.Property(m => m.LoginProvider).HasMaxLength(85));
-            modelBuilder.Entity<IdentityUserToken<string>>(entity => entity.Property(m => m.Name).HasMaxLength(85));
-
-            modelBuilder.Entity<IdentityUserClaim<string>>(entity => entity.Property(m => m.Id).HasMaxLength(85));
-            modelBuilder.Entity<IdentityUserClaim<string>>(entity => entity.Property(m => m.UserId).HasMaxLength(85));
-            modelBuilder.Entity<IdentityRoleClaim<string>>(entity => entity.Property(m => m.Id).HasMaxLength(85));
-            modelBuilder.Entity<IdentityRoleClaim<string>>(entity => entity.Property(m => m.RoleId).HasMaxLength(85));*/
             
-            modelBuilder.Entity<Administrator>().HasData(new Administrator(-1, "admin@admin.ba", "admin", "b", "k"));
             const string ADMIN_ID = "ff06b223-45b2-4556-95b6-2e5ed16d81c9";
             const string USER_ID = "26d10b61-c3e2-4863-bad6-6d0f4e131529";
             const string EMPLOYEE_ID = "4922c26e-a27f-4faa-a685-593e945800fd";
+
+            // create default roles
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {
                 Id = "1",
@@ -77,7 +57,9 @@ namespace BestHealtStrategies.Data
                 Name = "user",
                 NormalizedName = "USER"
             });
-            modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser
+
+            //create default admin account
+            modelBuilder.Entity<User>().HasData(new User
             {
                 Id = ADMIN_ID,
                 UserName = "admin@admin.com",
@@ -94,15 +76,20 @@ namespace BestHealtStrategies.Data
                 TwoFactorEnabled = false,
                 LockoutEnd = null,
                 LockoutEnabled = false,
-                AccessFailedCount = 0
+                AccessFailedCount = 0,
+                Name = "Admin",
+                Surname = "Admin",
+                Role = Role.ADMIN
             });
+            // assigen admin role to admin user account
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
                 RoleId = "1",
                 UserId = ADMIN_ID
             });
 
-            modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser
+            //create default employee account
+            modelBuilder.Entity<User>().HasData(new User
             {
                 Id = EMPLOYEE_ID,
                 UserName = "emp@emp.com",
@@ -119,16 +106,32 @@ namespace BestHealtStrategies.Data
                 TwoFactorEnabled = false,
                 LockoutEnd = null,
                 LockoutEnabled = true,
-                AccessFailedCount = 0
+                AccessFailedCount = 0,
+                Name = "Employee",
+                Surname = "Employee",
+                Role = Role.EMPLOYEE,
+                Age = 21,
+                Height = 185,
+                Weight = 74,
+                Gender = Gender.MALE,
+                Activity = ActivityLevel.LIGHT,
+                Benefit = Benefit.ENERGY,
+                Diet = Diet.KETOGENIC,
+                Intolerances = new List<Intolerance>(){
+                    Intolerance.DAIRY,
+                    Intolerance.SOY
+                }
             });
 
+            // assign employee role to employee user account
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
                 RoleId = "2",
                 UserId = EMPLOYEE_ID
             });
 
-            modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser
+            // create default user
+            modelBuilder.Entity<User>().HasData(new User
             {
                 Id = USER_ID,
                 UserName = "user@user.com",
@@ -145,15 +148,31 @@ namespace BestHealtStrategies.Data
                 TwoFactorEnabled = false,
                 LockoutEnd = null,
                 LockoutEnabled = true,
-                AccessFailedCount = 0
+                AccessFailedCount = 0,
+                Name = "Bakir",
+                Surname = "Karovic",
+                Role = Role.USER,
+                Age = 21,
+                Height = 185,
+                Weight = 74,
+                Gender = Gender.MALE,
+                Activity = ActivityLevel.LIGHT,
+                Benefit = Benefit.ENERGY,
+                Diet = Diet.KETOGENIC,
+                Intolerances = new List<Intolerance>(){
+                    Intolerance.DAIRY,
+                    Intolerance.SOY
+                }
             });
 
+            // assign user role to user account
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
                 RoleId = "3",
                 UserId = USER_ID
             });
 
+            // map classes to tables
             modelBuilder.Entity<Meal>().ToTable("Meal");
             modelBuilder.Entity<Administrator>().ToTable("Administrator");
             modelBuilder.Entity<DailyMealPlan>().ToTable("DailyMealPlan");
@@ -166,7 +185,18 @@ namespace BestHealtStrategies.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        private List<Intolerance> ParseIntolerances(string[] strings)
+        private string ConvertIntolerancesToCsvString(List<Intolerance> intolerances)
+        {
+            StringBuilder sb = new StringBuilder("");
+            foreach (Intolerance intolerance in intolerances)
+            {
+                sb.Append(intolerance.ToString());
+                sb.Append(",");
+            }
+            sb.Remove(sb.Length - 1, 1);
+            return sb.ToString();
+        }
+        private List<Intolerance> ParseIntolerancesFromCSV(string[] strings)
         {
             List<Intolerance> intolerances = new List<Intolerance>();
             foreach (string s in strings)

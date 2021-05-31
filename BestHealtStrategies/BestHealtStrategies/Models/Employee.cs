@@ -10,8 +10,8 @@ namespace BestHealtStrategies.Models
     public class Employee : Person
     {
         public Employee() { }
-        public Employee(int iD, string email, string password, string name, string surname) :
-            base(iD, email, password, name, surname, Role.EMPLOYEE)
+        public Employee(string name, string surname) :
+            base(name, surname, Role.EMPLOYEE)
         {
         }
         [Required]
