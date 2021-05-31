@@ -19,7 +19,7 @@ namespace BestHealtStrategies.Controllers
         }
         // GET: Users
         //[Authorize]
-        //[Authorize(Roles = "administrator")]
+        [Authorize(Roles = "administrator")]
         public ActionResult Index()
         {
             var users = _context.Users.ToList();

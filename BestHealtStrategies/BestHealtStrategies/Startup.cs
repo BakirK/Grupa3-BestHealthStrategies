@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebEssentials.AspNetCore.Pwa;
 
 namespace BestHealtStrategies
 {
@@ -36,6 +37,13 @@ namespace BestHealtStrategies
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            //services.AddMvc();
+            services.AddProgressiveWebApp(new PwaOptions
+            {
+                RegisterServiceWorker = true,
+                RegisterWebmanifest = true,
+                Strategy = ServiceWorkerStrategy.CacheFirst
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
