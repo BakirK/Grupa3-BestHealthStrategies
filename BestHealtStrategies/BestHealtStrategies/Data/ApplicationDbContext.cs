@@ -79,7 +79,17 @@ namespace BestHealtStrategies.Data
                 AccessFailedCount = 0,
                 Name = "Admin",
                 Surname = "Admin",
-                Role = Role.ADMIN
+                Role = Role.ADMIN,
+                Age = 21,
+                Height = 166,
+                Weight = 85,
+                Gender = Gender.FEMALE,
+                Activity = ActivityLevel.NOEXERCISE,
+                Benefit = Benefit.FATLOSS,
+                Diet = Diet.GLUTENFREE,
+                Intolerances = new List<Intolerance>(){
+                    Intolerance.GRAIN
+                }
             });
             // assigen admin role to admin user account
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
@@ -111,15 +121,13 @@ namespace BestHealtStrategies.Data
                 Surname = "Employee",
                 Role = Role.EMPLOYEE,
                 Age = 21,
-                Height = 185,
-                Weight = 74,
+                Height = 187,
+                Weight = 90,
                 Gender = Gender.MALE,
-                Activity = ActivityLevel.LIGHT,
-                Benefit = Benefit.ENERGY,
-                Diet = Diet.KETOGENIC,
+                Activity = ActivityLevel.HARD,
+                Benefit = Benefit.MUSCLEGAIN,
+                Diet = Diet.PALEO,
                 Intolerances = new List<Intolerance>(){
-                    Intolerance.DAIRY,
-                    Intolerance.SOY
                 }
             });
 
