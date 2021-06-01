@@ -201,7 +201,7 @@ namespace BestHealtStrategies.Data
                 sb.Append(intolerance.ToString());
                 sb.Append(",");
             }
-            sb.Remove(sb.Length - 1, 1);
+            //sb.Remove(sb.Length - 1, 1);
             return sb.ToString();
         }
         private List<Intolerance> ParseIntolerancesFromCSV(string[] strings)

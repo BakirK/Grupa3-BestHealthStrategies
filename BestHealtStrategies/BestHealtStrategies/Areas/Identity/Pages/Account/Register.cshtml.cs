@@ -116,6 +116,8 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
                 // novii userrrrrrrrrrr TODO
                 var user = new User
                 {
+                    Name = Input.Name,
+                    Surname = Input.Surname,
                     Age = Input.Age,
                     Height = Input.Height,
                     Weight = Input.Weight,
@@ -128,6 +130,7 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
                     UserName = Input.Email,
                     Email = Input.Email
                 };
+                Console.WriteLine(user);
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

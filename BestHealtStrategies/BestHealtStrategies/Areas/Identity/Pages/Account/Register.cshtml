@@ -1,5 +1,6 @@
 ﻿@page
 @model RegisterModel
+
 @{
     ViewData["Title"] = "Register";
 }
@@ -7,82 +8,122 @@
 
 <div class="container m-4 row">
     <div class="col-md-4">
-    <h1>@ViewData["Title"]</h1>
-    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-        <h4>Create a new account.</h4>
-        <hr />
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Input.Email"></label>
-            <input asp-for="Input.Email" class="form-control" />
-            <span asp-validation-for="Input.Email" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.Password"></label>
-            <input asp-for="Input.Password" class="form-control" />
-            <span asp-validation-for="Input.Password" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.ConfirmPassword"></label>
-            <input asp-for="Input.ConfirmPassword" class="form-control" />
-            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-        </div>
-        <!-- TODO -->
-        <div class="form-group">
-            <label asp-for="Input.Name" class="control-label"></label>
-            <input asp-for="Input.Name" class="form-control" />
-            <span asp-validation-for="Input.Name" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.Surname" class="control-label"></label>
-            <input asp-for="Input.Surname" class="form-control" />
-            <span asp-validation-for="Input.Surname" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.Age" class="control-label"></label>
-            <input asp-for="Input.Age" class="form-control" />
-            <span asp-validation-for="Input.Age" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.Height" class="control-label"></label>
-            <input asp-for="Input.Height" class="form-control" />
-            <span asp-validation-for="Input.Height" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.Weight" class="control-label"></label>
-            <input asp-for="Input.Weight" class="form-control" />
-            <span asp-validation-for="Input.Weight" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.Activity" class="control-label"></label>
-            <select asp-for="Input.Activity" class="form-control">
-                <option value="NOEXERCISE">NOEXERCISE</option>
-                <option value="LIGHT">NOEXERCISE</option>
-                <option value="MODERATE">MODERATE</option>
-            </select>
-            <span asp-validation-for="Input.Activity" class="text-danger"></span>
-        </div>
-       
-        <div class="form-group">
-            <label asp-for="Input.Benefit" class="control-label"></label>
-            <select asp-for="Input.Benefit" class="form-control">
-                <option value="NOEXERCISE">NOEXERCISE</option>
-                <option value="LIGHT">NOEXERCISE</option>
-                <option value="MODERATE">MODERATE</option>
-            </select>
-            <span asp-validation-for="Input.Benefit" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.Diet" class="control-label"></label>
-            <select asp-for="Input.Diet" class="form-control">
-                <option value="NOEXERCISE">NOEXERCISE</option>
-                <option value="LIGHT">NOEXERCISE</option>
-                <option value="MODERATE">MODERATE</option>
-            </select>
-            <span asp-validation-for="Input.Diet" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
+        <h1>@ViewData["Title"]</h1>
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <!-- TODO -->
+            <div class="form-group">
+                <label asp-for="Input.Name" class="control-label"></label>
+                <input asp-for="Input.Name" class="form-control" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Surname" class="control-label"></label>
+                <input asp-for="Input.Surname" class="form-control" />
+                <span asp-validation-for="Input.Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Gender" class="control-label"></label>
+                <select asp-for="Input.Gender" class="form-control">
+                    <option value="MALE">Male</option>
+                    <option value="FIMALE">Fimale</option>
+                </select>
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Age" class="control-label"></label>
+                <input asp-for="Input.Age" class="form-control" />
+                <span asp-validation-for="Input.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Height" class="control-label"></label>
+                <input asp-for="Input.Height" class="form-control" />
+                <span asp-validation-for="Input.Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Weight" class="control-label"></label>
+                <input asp-for="Input.Weight" class="form-control" />
+                <span asp-validation-for="Input.Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Activity" class="control-label"></label>
+                <select asp-for="Input.Activity" class="form-control">
+                    <option value="NOEXERCISE">No exercise</option>
+                    <option value="LIGHT">Light</option>
+                    <option value="MODERATE">Moderate</option>
+                    <option value="HARD">Hard</option>
+                    <option value="VERYHARD">Very hard</option>
+                </select>
+                <span asp-validation-for="Input.Activity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.Benefit" class="control-label"></label>
+                <select asp-for="Input.Benefit" class="form-control">
+                    <option value="FATLOSS">FATLOSS</option>
+                    <option value="MUSCLEGAIN">MUSCLEGAIN</option>
+                    <option value="STRESSREDUCTION">STRESSREDUCTION</option>
+                    <option value="ENERGY">ENERGY</option>
+                    <option value="MOOD">MOOD</option>
+                    <option value="HEALTH">HEALTH</option>
+                </select>
+                <span asp-validation-for="Input.Benefit" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.Diet" class="control-label"></label>
+                <select asp-for="Input.Diet" class="form-control">
+                    <option value="GLUTENFREE">GLUTENFREE</option>
+                    <option value="KETOGENIC">KETOGENIC</option>
+                    <option value="VEGETARIAN">VEGETARIAN</option>
+                    <option value="LACTOVEGETARIAN">LACTOVEGETARIAN</option>
+                    <option value="OVOVEGETARIAN">OVOVEGETARIAN</option>
+                    <option value="VEGAN">VEGAN</option>
+                    <option value="PESCETARIAN">PESCETARIAN</option>
+                    <option value="PALEO">PALEO</option>
+                    <option value="PRIMAL">PRIMAL</option>
+                </select>
+                <span asp-validation-for="Input.Diet" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.Intolerances" class="control-label"></label>
+                <br />
+                <div asp-for="Input.Intolerances" class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="DAIRY">
+                    <label class="form-check-label" for="inlineCheckbox1">DAIRY</label>
+                </div>
+                <div asp-for="Input.Intolerances" class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="EGG">
+                    <label class="form-check-label" for="inlineCheckbox2">EGG</label>
+                </div>
+                <div asp-for="Input.Intolerances" class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="GLUTEN" >
+                    <label class="form-check-label" for="inlineCheckbox3">GLUTEN</label>
+                </div>
+                
+                <span asp-validation-for="Input.Intolerances" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
