@@ -13,6 +13,21 @@ namespace BestHealtStrategies.Models
     {
         public User() {}
 
+        public User(string name, string surname, string email,
+            int age, int height, int weight, Gender gender, ActivityLevel activity,
+            Benefit benefit, Diet diet) :
+            base(name, surname, Role.USER,email)
+        {
+            Age = age;
+            Height = height;
+            Weight = weight;
+            Gender = gender;
+            Activity = activity;
+            Benefit = benefit;
+            Diet = diet;
+            Bmi = Weight / Height * Height;
+        }
+
         public User(string name, string surname, 
             int age, int height, int weight, Gender gender, ActivityLevel activity, 
             Benefit benefit, Diet diet, List<Intolerance> intolerances, 
