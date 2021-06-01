@@ -756,11 +756,11 @@
 								"$ref": "AAAAAAF5v4hXTspYz3k="
 							},
 							"font": "Arial;13;0",
-							"left": 496,
+							"left": 488,
 							"top": 216,
-							"width": 89.498046875,
+							"width": 145,
 							"height": 25,
-							"text": "undetermined"
+							"text": "Windows server"
 						},
 						{
 							"_type": "UMLNodeView",
