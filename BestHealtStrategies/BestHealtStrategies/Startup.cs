@@ -41,8 +41,8 @@ namespace BestHealtStrategies
             services.AddProgressiveWebApp(new PwaOptions
             {
                 RegisterServiceWorker = true,
-                RegisterWebmanifest = true,
-                Strategy = ServiceWorkerStrategy.CacheFirst
+                RegisterWebmanifest = true
+                //Strategy = ServiceWorkerStrategy.CacheFirst
             });
         }
 
