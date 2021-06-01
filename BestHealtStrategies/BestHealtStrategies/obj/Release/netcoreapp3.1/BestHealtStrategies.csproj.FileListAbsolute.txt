@@ -382,3 +382,8 @@ C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\bin\
 C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\bin\Release\netcoreapp3.1\NWebsec.AspNetCore.Mvc.TagHelpers.dll
 C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\bin\Release\netcoreapp3.1\WebEssentials.AspNetCore.Pwa.dll
 C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\bin\Release\netcoreapp3.1\wwwroot\manifest.json
+C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\Release\netcoreapp3.1\Razor\Views\User\Create.cshtml.g.cs
+C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\Release\netcoreapp3.1\Razor\Views\User\Delete.cshtml.g.cs
+C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\Release\netcoreapp3.1\Razor\Views\User\Details.cshtml.g.cs
+C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\Release\netcoreapp3.1\Razor\Views\User\Edit.cshtml.g.cs
+C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\Release\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
