@@ -10,6 +10,7 @@ using System.Text.Json;
 using Newtonsoft.Json;
 using static BestHealtStrategies.Models.ValueObjects.ValueObjects;
 using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace BestHealtStrategies.Models
 {
@@ -24,7 +25,8 @@ namespace BestHealtStrategies.Models
         // private UriTemplate template = new UriTemplate("/mealplanner/generate?timeFrame=week&targetCalories={cal}&diet={diet}&exclude={intolerances}&apiKey=51efcf710ac84199993836a5d7bcd080");
         private static Uri Prefix = new Uri("https://api.spoonacular.com");
 
-        public static SpoonacularApi Instance {
+        public static SpoonacularApi Instance
+        {
             get
             {
                 return lazy.Value;
@@ -37,7 +39,6 @@ namespace BestHealtStrategies.Models
             var result = client.GetAsync(builder.Uri).Result;
             using (StreamReader sr = new StreamReader(result.Content.ReadAsStreamAsync().Result))
             {
-                Console.WriteLine(sr.ReadToEnd());
                 Meal meal = JsonConvert.DeserializeObject<Meal>(sr.ReadToEnd());
                 return meal;
             }
@@ -45,18 +46,20 @@ namespace BestHealtStrategies.Models
 
         public List<DailyMealPlan> getWeeklyMealPlan(User user)
         {
-            // TODO: treba jos spasavati u bazu deilyMealPlan Meal i nutrient ...
-            int targetCalories = Convert.ToInt32(user.TargetCalories);
-            String diet = user.Diet.ToString();
             List<DailyMealPlan> weeklyMealPlan = new List<DailyMealPlan>();
             UriBuilder builder = new UriBuilder("https://api.spoonacular.com/mealplanner/generate");
-            string query = "timeFrame=week&targetCalories=" + targetCalories + "&diet=" + 
-                            diet + "&apiKey=" + ApiKey + "&exclude=";
-            builder.Query = query;
-            foreach (Intolerance intolerance in user.Intolerances)
+            StringBuilder query = new StringBuilder("timeFrame=week&targetCalories=" + user.TargetCalories + "&diet=" +
+                            user.Diet.ToString() + "&apiKey=" + ApiKey + "&exclude=egg");
+            if (user.Intolerances != null)
             {
-                query += intolerance.ToString() + ",";
+                foreach (Intolerance intolerance in user.Intolerances)
+                {
+                    query.Append(intolerance.ToString() + ",");
+                    query.Remove(query.Length - 1, 1);
+                }
             }
+            builder.Query = query.ToString();
+
             HttpClient client = new HttpClient();
             var result = client.GetAsync(builder.Uri).Result;
             using (StreamReader sr = new StreamReader(result.Content.ReadAsStreamAsync().Result))
@@ -64,44 +67,45 @@ namespace BestHealtStrategies.Models
                 JObject json = JObject.Parse(sr.ReadToEnd());
                 // parse week array of daily meals
                 IEnumerable<JToken> week = json.SelectToken("week");
-
+                if (week == null)
+                {
+                    //api limit reached
+                    throw new Exception("Daily API limit reached");
+                }
                 foreach (JToken dayy in week)
                 {
                     // parse nutrient object
                     // select self because c#
                     JToken day = dayy.First();
                     JToken nutrients = day.SelectToken("nutrients");
-                    Console.WriteLine(nutrients);
-                    Console.WriteLine(nutrients.ToString());
                     Nutrient nutrient = JsonConvert.DeserializeObject<Nutrient>(nutrients.ToString());
 
                     DailyMealPlan dailyMealPlan = new DailyMealPlan();
+                    nutrient.DailyMealPlan = dailyMealPlan;
                     //todo - id za daily meal plan
                     dailyMealPlan.StartDate = DateTime.Now;
                     dailyMealPlan.EndDate = DateTime.Now.AddDays(7);
                     dailyMealPlan.User = user;
-                    dailyMealPlan.UserId = user.Id; // pazi
+                    dailyMealPlan.UserId = user.Id;
                     dailyMealPlan.Nutrient = nutrient;
 
                     List<Meal> dailyMeals = new List<Meal>();
 
                     // parse json array of 3 daily meals
-                    IEnumerable<JToken> meals = day.SelectTokens("meals");
+                    IEnumerable<JToken> meals = day.SelectTokens("meals").First();
                     foreach (JToken m in meals)
                     {
                         // select self because c#
-                        JToken mealToken = m.First();
-                        int id = (int)mealToken.SelectToken("id");
+                        int id = (int)m.SelectToken("id");
                         Meal meal = getMeal(id);
+                        meal.DailyMealPlan = dailyMealPlan;
+                        //meal.MealPlanID = dailyMealPlan.Id;
                         dailyMeals.Add(meal);
                     }
                     dailyMealPlan.Meals = dailyMeals;
 
                     weeklyMealPlan.Add(dailyMealPlan);
                 }
-                
-                System.Diagnostics.Debug.WriteLine("SomeText");
-                System.Diagnostics.Debug.WriteLine(weeklyMealPlan);
                 return weeklyMealPlan;
             }
         }
