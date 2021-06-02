@@ -15,9 +15,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
-
 using static BestHealtStrategies.Models.ValueObjects.ValueObjects;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BestHealtStrategies.Areas.Identity.Pages.Account
 {
@@ -50,7 +48,7 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            // Dodani atributii
+            // TODOO
             [Required]
             public string Name { get; set; }
 
@@ -83,6 +81,7 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
 
             public List<Intolerance> Intolerances { get; set; }
 
+            //zipa
             public List<DailyMealPlan> WeeklyMealPlan { get; set; }
 
 
@@ -115,28 +114,15 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                // novii user (samo Object)
-                var InitialUser = new User
-                (
-                    Input.Name,
-                    Input.Surname,
-                    Input.Email,
-                    Input.Age,
-                    Input.Height, 
-                    Input.Weight,
-                    Input.Gender,
-                    Input.Activity,
-                    Input.Benefit,
-                    Input.Diet,
-                    Input.Intolerances
-                );
-
-                
-                // Novi user koji se spasava u DB
                 var user = new User
                 {
+                    UserName = Input.Name,
+                    NormalizedUserName = Input.Name.ToUpper(),
+                    Email = Input.Email,
+                    NormalizedEmail = Input.Email.ToUpper(),
                     Name = Input.Name,
                     Surname = Input.Surname,
+                    Role = Role.USER,
                     Age = Input.Age,
                     Height = Input.Height,
                     Weight = Input.Weight,
@@ -144,15 +130,11 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
                     Activity = Input.Activity,
                     Benefit = Input.Benefit,
                     Diet = Input.Diet,
-                    Bmi = Input.Weight / Input.Height * Input.Height,
-                    Intolerances = Input.Intolerances,
-                    TargetCalories = InitialUser.TargetCalories,
-                    //WeeklyMealPlan = mealPlan,
-                    UserName = Input.Email,
-                    Email = Input.Email
+                    Intolerances = Input.Intolerances
                 };
-                
-                
+                //automatski se kreira ID za usera kad god se pozove new User(); bez inserta u bazu
+                user.UpdateTargetCalories();
+                user.WeeklyMealPlan = SpoonacularApi.Instance.getWeeklyMealPlan(user);
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
@@ -170,7 +152,6 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
                     // MORA BITI callback js msm
                     //SpoonacularApi api = new SpoonacularApi();
                     //List<DailyMealPlan> mealPlan = api.getWeeklyMealPlan(InitialUser);
-
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
