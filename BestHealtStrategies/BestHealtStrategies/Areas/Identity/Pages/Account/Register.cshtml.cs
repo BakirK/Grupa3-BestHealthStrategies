@@ -82,6 +82,8 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
 
             public List<Intolerance> Intolerances { get; set; }
 
+            //zipa
+            public List<DailyMealPlan> WeeklyMealPlan { get; set; }
 
 
             [Required]
@@ -114,6 +116,25 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 // novii userrrrrrrrrrr TODO
+                var InitialUser = new User
+                (
+                    Input.Name,
+                    Input.Surname,
+                    Input.Email,
+                    Input.Age,
+                    Input.Height,
+                    Input.Weight,
+                    Input.Gender,
+                    Input.Activity,
+                    Input.Benefit,
+                    Input.Diet,
+                    Input.Intolerances
+                );
+
+                //SpoonacularApi api = new SpoonacularApi();
+                //List<DailyMealPlan> mealPlan = api.getWeeklyMealPlan(InitialUser);
+
+
                 var user = new User
                 {
                     Name = Input.Name,
@@ -126,11 +147,15 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
                     Benefit = Input.Benefit,
                     Diet = Input.Diet,
                     Bmi = Input.Weight / Input.Height * Input.Height,
-
+                    Intolerances = Input.Intolerances,
+                    TargetCalories = InitialUser.TargetCalories,
+                    //WeeklyMealPlan = mealPlan,
                     UserName = Input.Email,
                     Email = Input.Email
                 };
+                
                 Console.WriteLine(user);
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

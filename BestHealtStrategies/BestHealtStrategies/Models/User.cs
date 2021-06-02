@@ -15,7 +15,8 @@ namespace BestHealtStrategies.Models
 
         public User(string name, string surname, string email,
             int age, int height, int weight, Gender gender, ActivityLevel activity,
-            Benefit benefit, Diet diet) :
+            Benefit benefit, Diet diet, List<Intolerance> intolerances
+            ) :
             base(name, surname, Role.USER,email)
         {
             Age = age;
@@ -26,6 +27,8 @@ namespace BestHealtStrategies.Models
             Benefit = benefit;
             Diet = diet;
             Bmi = Weight / Height * Height;
+            Intolerances = intolerances;
+            TargetCalories = CalculateTargetCalories();
         }
 
         public User(string name, string surname, 

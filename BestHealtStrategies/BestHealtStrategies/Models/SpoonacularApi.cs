@@ -48,12 +48,12 @@ namespace BestHealtStrategies.Models
             List<DailyMealPlan> weeklyMealPlan = new List<DailyMealPlan>();
             UriBuilder builder = new UriBuilder("https://api.spoonacular.com/mealplanner/generate");
             string query = "timeFrame=week&targetCalories=" + user.TargetCalories + "&diet=" + 
-                            user.Diet.ToString() + "&apiKey=" + ApiKey + "&exclude=";
+                            user.Diet.ToString() + "&apiKey=" + ApiKey + "&exclude=egg";
             builder.Query = query;
-            foreach (Intolerance intolerance in user.Intolerances)
+            /*foreach (Intolerance intolerance in user.Intolerances)
             {
                 query += intolerance.ToString() + ",";
-            }
+            }*/
             HttpClient client = new HttpClient();
             var result = client.GetAsync(builder.Uri).Result;
             using (StreamReader sr = new StreamReader(result.Content.ReadAsStreamAsync().Result))
