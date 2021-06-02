@@ -95,7 +95,6 @@ namespace BestHealtStrategies.Models
                     IEnumerable<JToken> meals = day.SelectTokens("meals").First();
                     foreach (JToken m in meals)
                     {
-                        // select self because c#
                         int id = (int)m.SelectToken("id");
                         Meal meal = getMeal(id);
                         meal.DailyMealPlan = dailyMealPlan;
