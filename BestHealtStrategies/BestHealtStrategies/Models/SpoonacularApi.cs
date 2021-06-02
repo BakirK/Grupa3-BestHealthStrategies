@@ -45,15 +45,18 @@ namespace BestHealtStrategies.Models
 
         public List<DailyMealPlan> getWeeklyMealPlan(User user)
         {
+            // TODO: treba jos spasavati u bazu deilyMealPlan Meal i nutrient ...
+            int targetCalories = Convert.ToInt32(user.TargetCalories);
+            String diet = user.Diet.ToString();
             List<DailyMealPlan> weeklyMealPlan = new List<DailyMealPlan>();
             UriBuilder builder = new UriBuilder("https://api.spoonacular.com/mealplanner/generate");
-            string query = "timeFrame=week&targetCalories=" + user.TargetCalories + "&diet=" + 
-                            user.Diet.ToString() + "&apiKey=" + ApiKey + "&exclude=egg";
+            string query = "timeFrame=week&targetCalories=" + targetCalories + "&diet=" + 
+                            diet + "&apiKey=" + ApiKey + "&exclude=";
             builder.Query = query;
-            /*foreach (Intolerance intolerance in user.Intolerances)
+            foreach (Intolerance intolerance in user.Intolerances)
             {
                 query += intolerance.ToString() + ",";
-            }*/
+            }
             HttpClient client = new HttpClient();
             var result = client.GetAsync(builder.Uri).Result;
             using (StreamReader sr = new StreamReader(result.Content.ReadAsStreamAsync().Result))
@@ -77,7 +80,7 @@ namespace BestHealtStrategies.Models
                     dailyMealPlan.StartDate = DateTime.Now;
                     dailyMealPlan.EndDate = DateTime.Now.AddDays(7);
                     dailyMealPlan.User = user;
-                    dailyMealPlan.UserId = user.Id;
+                    dailyMealPlan.UserId = user.Id; // pazi
                     dailyMealPlan.Nutrient = nutrient;
 
                     List<Meal> dailyMeals = new List<Meal>();
@@ -96,6 +99,9 @@ namespace BestHealtStrategies.Models
 
                     weeklyMealPlan.Add(dailyMealPlan);
                 }
+                
+                System.Diagnostics.Debug.WriteLine("SomeText");
+                System.Diagnostics.Debug.WriteLine(weeklyMealPlan);
                 return weeklyMealPlan;
             }
         }

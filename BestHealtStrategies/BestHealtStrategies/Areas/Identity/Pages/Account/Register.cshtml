@@ -43,7 +43,7 @@
                 <label asp-for="Input.Gender" class="control-label"></label>
                 <select asp-for="Input.Gender" class="form-control">
                     <option value="MALE">Male</option>
-                    <option value="FIMALE">Fimale</option>
+                    <option value="FEMALE">Female</option>
                 </select>
                 <span asp-validation-for="Input.Gender" class="text-danger"></span>
             </div>
@@ -102,29 +102,21 @@
                 </select>
                 <span asp-validation-for="Input.Diet" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Input.Intolerances" class="control-label"></label>
                 <br />
-                <select asp-for="Input.Intolerances" class="form-control" multiple>
+                <select asp-for="Input.Intolerances" class="selectpicker" multiple >
                     <option value="DAIRY">DAIRY</option>
                     <option value="EGG">EGG</option>
                     <option value="GLUTEN">GLUTEN</option>
-                    
+                    <option value="GRAIN">GRAIN</option>
+                    <option value="PEANUT">PEANUT</option>
+                    <option value="SEAFOOD">SEAFOOD</option>
+                    <option value="SOY">SOY</option>
+                    <option value="SULFITE">SULFITE</option>
+                    <option value="TREENUT">TREENUT</option>
                 </select>
-                <!--<div asp-for="Input.Intolerances" class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="DAIRY">
-        <label class="form-check-label" for="inlineCheckbox1">DAIRY</label>
-    </div>
-    <div asp-for="Input.Intolerances" class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="EGG">
-        <label class="form-check-label" for="inlineCheckbox2">EGG</label>
-    </div>
-    <div asp-for="Input.Intolerances" class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="GLUTEN" >
-        <label class="form-check-label" for="inlineCheckbox3">GLUTEN</label>
-    </div>
-    -->
+
                 <span asp-validation-for="Input.Intolerances" class="text-danger"></span>
             </div>
 
@@ -162,6 +154,7 @@
         </section>
     </div>
 </div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

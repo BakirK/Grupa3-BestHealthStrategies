@@ -79,11 +79,13 @@ namespace BestHealtStrategies.Models
         [ScaffoldColumn(false)]
         public double TargetCalories { get; set; }
 
+        // TODO: Probati da se ovo ne mjenja (jer mozda i nije potrebno u user tabeli)
         [InverseProperty("User")]
         public List<ProgressHistory> ProgressHistroy { get; set; }
 
         [InverseProperty("User")]
         public List<DailyMealPlan> WeeklyMealPlan { get; set; }
+
         [InverseProperty("User")]
         public List<Rating> Raitings { get; set; }
 

@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 
 
 using static BestHealtStrategies.Models.ValueObjects.ValueObjects;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BestHealtStrategies.Areas.Identity.Pages.Account
 {
@@ -49,7 +50,7 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            // TODOO
+            // Dodani atributii
             [Required]
             public string Name { get; set; }
 
@@ -82,7 +83,6 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
 
             public List<Intolerance> Intolerances { get; set; }
 
-            //zipa
             public List<DailyMealPlan> WeeklyMealPlan { get; set; }
 
 
@@ -115,14 +115,14 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                // novii userrrrrrrrrrr TODO
+                // novii user (samo Object)
                 var InitialUser = new User
                 (
                     Input.Name,
                     Input.Surname,
                     Input.Email,
                     Input.Age,
-                    Input.Height,
+                    Input.Height, 
                     Input.Weight,
                     Input.Gender,
                     Input.Activity,
@@ -131,10 +131,8 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
                     Input.Intolerances
                 );
 
-                //SpoonacularApi api = new SpoonacularApi();
-                //List<DailyMealPlan> mealPlan = api.getWeeklyMealPlan(InitialUser);
-
-
+                
+                // Novi user koji se spasava u DB
                 var user = new User
                 {
                     Name = Input.Name,
@@ -154,7 +152,7 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
                     Email = Input.Email
                 };
                 
-                Console.WriteLine(user);
+                
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
@@ -168,6 +166,10 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
+                    // TODO: ZA DOVENI USER (ID) POZVATI WEEKLYMEALPLAN KOJI CE KREIRATI DAILYMEALPLAN itd
+                    // MORA BITI callback js msm
+                    //SpoonacularApi api = new SpoonacularApi();
+                    //List<DailyMealPlan> mealPlan = api.getWeeklyMealPlan(InitialUser);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
