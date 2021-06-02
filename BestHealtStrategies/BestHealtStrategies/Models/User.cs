@@ -11,45 +11,8 @@ namespace BestHealtStrategies.Models
 {
     public class User : Person
     {
-        public User() {}
+        public User() { }
 
-        public User(string name, string surname, string email,
-            int age, int height, int weight, Gender gender, ActivityLevel activity,
-            Benefit benefit, Diet diet, List<Intolerance> intolerances
-            ) :
-            base(name, surname, Role.USER,email)
-        {
-            Age = age;
-            Height = height;
-            Weight = weight;
-            Gender = gender;
-            Activity = activity;
-            Benefit = benefit;
-            Diet = diet;
-            Bmi = Weight / Height * Height;
-            Intolerances = intolerances;
-            TargetCalories = CalculateTargetCalories();
-        }
-
-        public User(string name, string surname, 
-            int age, int height, int weight, Gender gender, ActivityLevel activity, 
-            Benefit benefit, Diet diet, List<Intolerance> intolerances, 
-            List<ProgressHistory> progressHistroy, List<DailyMealPlan> weeklyMealPlan) : 
-            base(name, surname, Role.USER)
-        {
-            Age = age;
-            Height = height;
-            Weight = weight;
-            Gender = gender;
-            Activity = activity;
-            Benefit = benefit;
-            Diet = diet;
-            Bmi = Weight / Height * Height;
-            Intolerances = intolerances;
-            TargetCalories = CalculateTargetCalories();
-            ProgressHistroy = progressHistroy;
-            WeeklyMealPlan = weeklyMealPlan;
-        }
         [Required]
         public int Age { get; set; }
 
@@ -79,13 +42,11 @@ namespace BestHealtStrategies.Models
         [ScaffoldColumn(false)]
         public double TargetCalories { get; set; }
 
-        // TODO: Probati da se ovo ne mjenja (jer mozda i nije potrebno u user tabeli)
         [InverseProperty("User")]
         public List<ProgressHistory> ProgressHistroy { get; set; }
 
         [InverseProperty("User")]
         public List<DailyMealPlan> WeeklyMealPlan { get; set; }
-
         [InverseProperty("User")]
         public List<Rating> Raitings { get; set; }
 
@@ -147,6 +108,12 @@ namespace BestHealtStrategies.Models
                 basalMetabolicRate -= 400;
 
             return basalMetabolicRate;
+        }
+
+        public void UpdateTargetCalories()
+        {
+            Bmi = Weight / (Height / 100) * (Height / 100);
+            TargetCalories = CalculateTargetCalories();
         }
 
     }
