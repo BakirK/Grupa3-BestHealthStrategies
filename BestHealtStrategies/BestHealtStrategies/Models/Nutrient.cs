@@ -10,20 +10,6 @@ namespace BestHealtStrategies.Models
     public class Nutrient
     {
         public Nutrient() { }
-        public Nutrient(int id, double calories, double carbohydrates, double fat, double protein)
-        {
-            Id = id;
-            Calories = calories;
-            Carbohydrates = carbohydrates;
-            Fat = fat;
-            Protein = protein;
-        }
-
-        public Nutrient(int iD, double calories, double carbohydrates, double fat, double protein, int? dailyMealPlanId, DailyMealPlan dailyMealPlan) : this(iD, calories, carbohydrates, fat, protein)
-        {
-            DailyMealPlanId = dailyMealPlanId;
-            DailyMealPlan = dailyMealPlan;
-        }
 
         [Key]
         public int Id { get; set; }

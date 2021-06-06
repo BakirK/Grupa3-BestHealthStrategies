@@ -10,30 +10,7 @@ namespace BestHealtStrategies.Models
     public class Meal
     {
         public Meal() { }
-        public Meal(
-            int iD, 
-            string title, 
-            string image, 
-            int readyInMinutes, 
-            int servings, 
-            string sourceURL, 
-            DailyMealPlan dailyMealPlan,
-            int? mealPlanID, 
-            string summary, 
-            string instructions)
-        {
-            ID = iD;
-            Title = title;
-            Image = image;
-            ReadyInMinutes = readyInMinutes;
-            Servings = servings;
-            SourceURL = sourceURL;
-            DailyMealPlan = dailyMealPlan;
-            MealPlanID = mealPlanID;
-            Summary = summary;
-            Instructions = instructions;
-        }
-
+        
         [Key]
         public int ID { get; set; }
         [Required, RegularExpression(@"[a-zA-Z ]+")]

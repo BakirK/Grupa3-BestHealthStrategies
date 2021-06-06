@@ -9,24 +9,6 @@ namespace BestHealtStrategies.Models
 {
     public class DailyMealPlan
     {
-        public DailyMealPlan(
-            int iD, 
-            string userId, 
-            User user, 
-            DateTime startDate, 
-            DateTime endDate, 
-            Nutrient nutrient, 
-            List<Meal> meals
-            )
-        {
-            Id = iD;
-            UserId = userId;
-            User = user;
-            StartDate = startDate;
-            EndDate = endDate;
-            Nutrient = nutrient;
-            Meals = meals;
-        }
         public DailyMealPlan() { }
 
         [Key, Required]
