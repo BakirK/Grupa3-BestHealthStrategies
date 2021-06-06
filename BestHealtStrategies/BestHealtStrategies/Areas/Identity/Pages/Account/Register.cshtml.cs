@@ -116,8 +116,8 @@ namespace BestHealtStrategies.Areas.Identity.Pages.Account
             {
                 var user = new User
                 {
-                    UserName = Input.Name,
-                    NormalizedUserName = Input.Name.ToUpper(),
+                    UserName = Input.Email,
+                    NormalizedUserName = Input.Email.ToUpper(),
                     Email = Input.Email,
                     NormalizedEmail = Input.Email.ToUpper(),
                     Name = Input.Name,
