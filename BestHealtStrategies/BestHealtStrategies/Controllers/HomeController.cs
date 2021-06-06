@@ -32,11 +32,17 @@ namespace BestHealtStrategies.Controllers
                 foreach (DailyMealPlan plan in plans)
                 {
                     List<Meal> meals = _context.Meal.ToList().FindAll(m => m.MealPlanID == plan.Id);
+                    foreach(Meal meal in meals)
+                    {
+                        System.Text.RegularExpressions.Regex rx = new System.Text.RegularExpressions.Regex("<[^>]*>");
+                        meal.Summary = rx.Replace(meal.Summary, "");
+                    }
                     plan.Meals = meals;
                     Nutrient n = _context.Nutrient.ToList().Find(n => n.DailyMealPlanId == plan.Id);
                     plan.Nutrient = n;
                 }
                 //var users = _context.Users.ToList();
+                user.WeeklyMealPlan = plans;
                 return View(user);
             }
             return View();

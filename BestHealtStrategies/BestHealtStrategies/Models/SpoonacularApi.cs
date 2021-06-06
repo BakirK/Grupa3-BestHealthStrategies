@@ -49,7 +49,7 @@ namespace BestHealtStrategies.Models
             List<DailyMealPlan> weeklyMealPlan = new List<DailyMealPlan>();
             UriBuilder builder = new UriBuilder("https://api.spoonacular.com/mealplanner/generate");
             StringBuilder query = new StringBuilder("timeFrame=week&targetCalories=" + user.TargetCalories + "&diet=" +
-                            user.Diet.ToString() + "&apiKey=" + ApiKey + "&exclude=egg");
+                            user.Diet.ToString() + "&apiKey=" + ApiKey + "&exclude=");
             if (user.Intolerances != null)
             {
                 foreach (Intolerance intolerance in user.Intolerances)

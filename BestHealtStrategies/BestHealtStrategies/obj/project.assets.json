@@ -11155,24 +11155,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bakir\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\HARUN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bakir\\Grupa3-FitnessPlaner\\BestHealtStrategies\\BestHealtStrategies\\BestHealtStrategies.csproj",
+      "projectUniqueName": "C:\\Users\\HARUN\\Documents\\GitHub\\Grupa3-BestHealthStrategies\\BestHealtStrategies\\BestHealtStrategies\\BestHealtStrategies.csproj",
       "projectName": "BestHealtStrategies",
-      "projectPath": "C:\\Users\\Bakir\\Grupa3-FitnessPlaner\\BestHealtStrategies\\BestHealtStrategies\\BestHealtStrategies.csproj",
-      "packagesPath": "C:\\Users\\Bakir\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bakir\\Grupa3-FitnessPlaner\\BestHealtStrategies\\BestHealtStrategies\\obj\\",
+      "projectPath": "C:\\Users\\HARUN\\Documents\\GitHub\\Grupa3-BestHealthStrategies\\BestHealtStrategies\\BestHealtStrategies\\BestHealtStrategies.csproj",
+      "packagesPath": "C:\\Users\\HARUN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HARUN\\Documents\\GitHub\\Grupa3-BestHealthStrategies\\BestHealtStrategies\\BestHealtStrategies\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Bakir\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\HARUN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11251,7 +11246,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
