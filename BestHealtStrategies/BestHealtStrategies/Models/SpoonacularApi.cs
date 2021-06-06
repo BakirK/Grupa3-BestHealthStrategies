@@ -98,6 +98,7 @@ namespace BestHealtStrategies.Models
                         int id = (int)m.SelectToken("id");
                         Meal meal = getMeal(id);
                         meal.DailyMealPlan = dailyMealPlan;
+                        meal.ID = new int();
                         //meal.MealPlanID = dailyMealPlan.Id;
                         dailyMeals.Add(meal);
                     }
