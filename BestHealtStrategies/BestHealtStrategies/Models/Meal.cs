@@ -31,5 +31,10 @@ namespace BestHealtStrategies.Models
         public string Summary { get; set; }
         [Required]
         public string Instructions { get; set; }
+
+        public static implicit operator List<object>(Meal v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

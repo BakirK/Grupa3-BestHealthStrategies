@@ -387,3 +387,4 @@ C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\
 C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\Release\netcoreapp3.1\Razor\Views\User\Details.cshtml.g.cs
 C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\Release\netcoreapp3.1\Razor\Views\User\Edit.cshtml.g.cs
 C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\Release\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Bakir\Grupa3-FitnessPlaner\BestHealtStrategies\BestHealtStrategies\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
