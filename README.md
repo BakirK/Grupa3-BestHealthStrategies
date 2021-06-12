@@ -8,6 +8,9 @@
 ## Deployment link
 http://besthealthstrategies.azurewebsites.net/
 
+## Video
+https://www.youtube.com/watch?v=9zF-25usazY
+
 ## Opis projekta
 Svjedoci smo sve bržeg života koji čovjek 21. vijeka živi. Manjak osviještenosti, znanja, ali i vremena dovodi do toga da se jako malo pažnje posvećuje vlastitom zdravlju i prilagođavanju životnog stila potrebama zdravlja. BestHealthStrategies predstavlja softver, odnosno web aplikaciju koja na jednostavan i intuitivan način omogućava planiranje i prilagođavanje ishrane potrebama svakog pojedinca. Cilj sistema je osigurati individualan plan ishrane za klijente po njihovim ličnim potrebama i željama, te im pomoći u kreiranju zdravog životnog stila. Kompletan sistem kontroliše vlasnik sistema odnosno administrator. Zaposlenici (nutricionisti) su zaduženi da kreiraju posebne planove ishrane koji idu uz specifične potrebe svakog klijenta. 
 	
