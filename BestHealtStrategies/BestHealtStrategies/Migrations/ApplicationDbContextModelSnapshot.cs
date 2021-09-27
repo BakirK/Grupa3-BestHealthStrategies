@@ -421,15 +421,16 @@ namespace BestHealtStrategies.Migrations
                             Id = "ff06b223-45b2-4556-95b6-2e5ed16d81c9",
                             AccessFailedCount = 0,
                             Activity = 0,
-                            Age = 0,
+                            Age = 21,
                             Benefit = 0,
                             Bmi = 0.0,
                             ConcurrencyStamp = "08337cc0-be1d-41a8-a4b5-7a4ad1213406",
                             Diet = 0,
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
-                            Gender = 0,
-                            Height = 0,
+                            Gender = 1,
+                            Height = 166,
+                            Intolerances = "GRAIN",
                             LockoutEnabled = false,
                             Name = "Admin",
                             NormalizedEmail = "ADMIN@ADMIN.COM",
@@ -442,23 +443,23 @@ namespace BestHealtStrategies.Migrations
                             TargetCalories = 0.0,
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com",
-                            Weight = 0
+                            Weight = 85
                         },
                         new
                         {
                             Id = "4922c26e-a27f-4faa-a685-593e945800fd",
                             AccessFailedCount = 0,
-                            Activity = 1,
+                            Activity = 3,
                             Age = 21,
-                            Benefit = 3,
+                            Benefit = 1,
                             Bmi = 0.0,
                             ConcurrencyStamp = "29510329-fc0f-4d8f-b173-23a3985d5819",
-                            Diet = 1,
+                            Diet = 7,
                             Email = "emp@emp.com",
                             EmailConfirmed = true,
                             Gender = 0,
-                            Height = 185,
-                            Intolerances = "DAIRY,SOY",
+                            Height = 187,
+                            Intolerances = "",
                             LockoutEnabled = true,
                             Name = "Employee",
                             NormalizedEmail = "EMP@EMP.COM",
@@ -471,7 +472,7 @@ namespace BestHealtStrategies.Migrations
                             TargetCalories = 0.0,
                             TwoFactorEnabled = false,
                             UserName = "emp@emp.com",
-                            Weight = 74
+                            Weight = 90
                         },
                         new
                         {
@@ -534,21 +535,21 @@ namespace BestHealtStrategies.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "0a49ea63-41ba-4822-99e3-38412e29f186",
+                            ConcurrencyStamp = "d3004395-b1a8-455b-b91a-165490a1aef6",
                             Name = "administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "c403ceba-6adf-4116-bf78-b141b119a038",
+                            ConcurrencyStamp = "bc9528a9-b5d2-4bcb-b77c-c0b3a3dcfac1",
                             Name = "employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "49fbb019-65ed-47e4-a0bf-ee7bd5a6dd0f",
+                            ConcurrencyStamp = "8fba52ec-abdb-4ab8-91cb-fbafbc68698a",
                             Name = "user",
                             NormalizedName = "USER"
                         });

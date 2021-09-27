@@ -6,7 +6,7 @@
 * Bakir Karović
 
 ## Deployment link
-http://besthealthstrategies.azurewebsites.net/
+https://besthealtstrategies20210927191124.azurewebsites.net/
 
 ## Video
 https://www.youtube.com/watch?v=9zF-25usazY

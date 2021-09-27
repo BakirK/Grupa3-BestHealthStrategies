@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace BestHealtStrategies.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;

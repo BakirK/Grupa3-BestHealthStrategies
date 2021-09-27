@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BestHealtStrategies.Models;
 using BestHealtStrategies.Data;
+using Microsoft.AspNetCore.Authorization;
 
-namespace StudentskaSluzba.Controllers
+namespace BestHealtStrategies.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _context;
